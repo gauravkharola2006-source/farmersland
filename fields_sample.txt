@@ -1,0 +1,5 @@
+1 30 wheat
+2 45 maize
+3 20 rice
+4 70 soybean
+5 25 barley
