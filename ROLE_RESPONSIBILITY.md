@@ -1,11 +1,11 @@
-# Gaurav Kharola — Core + Integration
+# Tanvi Tripathi — Scheduling Data Structures
 
 Assigned files:
-- `main.cpp` — main CLI and integration (shared-work item assigned here because the main program is the integration point)
-- `field_bst.h/.cpp` — field record BST, CRUD/search/list and save/load helpers
-- `pipeline_bfs.h/.cpp` — irrigation pipeline BFS
-- `tests/test_bst.cpp`, `tests/test_bfs.cpp` — related tests
-- `fields_sample.txt`, `pipeline_network.txt` — sample data
-- `Makefile`, `README.md` — build/test entry point and project instructions
+- `priority_heap.h/.cpp` — Max-Heap ordered by field dryness
+- `irrigation_queue.h/.cpp` — circular FIFO queue for irrigation requests
+- `tests/test_heap_queue.cpp` — heap and queue tests
 
-Important: `main.cpp` includes `priority_heap.h` and `irrigation_queue.h`, owned by Tanvi. The final build requires both role folders to be merged into one project directory before running `make`/`make test`.
+Shared/high-priority integration dependency:
+- These modules are called by Gaurav's `main.cpp`. Keep public class/function names and headers stable, and provide tested files to Gaurav for final integration.
+
+Not included in this milestone archive: crop-yield prediction, multi-day irrigation planner, and web UI/backend. Those tasks are listed in the report but are not present in the uploaded ZIP, so they still need implementation or a different full-project archive.
