@@ -1,4 +1,4 @@
-# Smart Farming System — Phase-II 40–50% Milestone (C++17)
+# Smart Farming System — Phase-II 
 
 This package is a deliberately partial milestone based on the supplied C++ project. It includes the field BST, pipeline BFS, Max-Heap, circular FIFO queue, a small integrated CLI, sample data, and module tests.
 
