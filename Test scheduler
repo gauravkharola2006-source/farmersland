@@ -1,0 +1,42 @@
+#include <cassert>
+#include <iostream>
+#include "field_bst.h"
+#include "priority_heap.h"
+#include "irrigation_queue.h"
+#include "scheduler.h"
+
+int main() {
+    Field *root = nullptr;
+    root = insertField(root, 1, 30, "wheat");   // dryness 70
+    root = insertField(root, 2, 45, "maize");   // dryness 55
+    root = insertField(root, 3, 20, "rice");    // dryness 80
+    root = insertField(root, 4, 70, "soy");     // dryness 30
+
+    Heap h; Queue q; int id;
+
+    // driest two first: 3 (80), then 1 (70)
+    assert(schedule_from_heap(root, h, q, 2) == 2);
+    assert(q.dequeue(id) == 0 && id == 3);
+    assert(q.dequeue(id) == 0 && id == 1);
+    assert(q.dequeue(id) == -1);
+
+    // asking for more than exist moves only what exists, in dryness order
+    assert(schedule_from_heap(root, h, q, 10) == 4);
+    assert(q.dequeue(id) == 0 && id == 3);
+    assert(q.dequeue(id) == 0 && id == 1);
+    assert(q.dequeue(id) == 0 && id == 2);
+    assert(q.dequeue(id) == 0 && id == 4);
+
+    // priorities are refreshed from current data: field 4 becomes the driest
+    root = insertField(root, 4, 5, "soy");      // dryness 95
+    assert(schedule_from_heap(root, h, q, 1) == 1);
+    assert(q.dequeue(id) == 0 && id == 4);
+
+    // edge cases
+    assert(schedule_from_heap(nullptr, h, q, 3) == 0);
+    assert(schedule_from_heap(root, h, q, 0) == 0);
+
+    bst_free(root);
+    std::cout << "Scheduler (Heap -> Queue): all tests passed\n";
+    return 0;
+}
