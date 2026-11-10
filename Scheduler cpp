@@ -1,0 +1,20 @@
+#include <vector>
+#include "scheduler.h"
+
+int schedule_from_heap(Field *root, Heap &heap, Queue &queue, int count) {
+    if (!root || count <= 0) return 0;
+    int n = collect_fields_into_array(root, nullptr);
+    if (n == 0) return 0;
+
+    std::vector<FieldItem> arr(n);
+    collect_fields_into_array(root, arr.data());
+    heap.build_from_array(arr.data(), n);      // fresh dryness values every time
+
+    int moved = 0;
+    FieldItem item;
+    while (moved < count && heap.extract_max(item) == 0) {
+        if (queue.enqueue(item.id) != 0) break;   // queue full
+        moved++;
+    }
+    return moved;
+}
