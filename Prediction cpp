@@ -1,0 +1,8 @@
+#include "prediction.h"
+
+double predict_yield(int moisture_percent) {
+    double m = static_cast<double>(moisture_percent);
+    double score = 1.0 - ((m - 50.0) * (m - 50.0)) / (50.0 * 50.0);
+    if (score < 0) score = 0;
+    return score;
+}
