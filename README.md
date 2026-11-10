@@ -1,7 +1,7 @@
 # Smart Farming System (C++17)
 
 **Course:** BTECH T330 (PBL) | **Team:** Avengers
-**Team members:** Gaurav Kharola (Team Lead, 2510011530) and Tanvi Tripathi (2510012053)
+**Team members:** Gaurav Kharola (Team Lead, 2510011530) and Tanvi Tripathi (2510012052)
 **Repository:** https://github.com/gauravkharola2006-source/farmersland.git
 
 A smart farming management system that stores field records, schedules irrigation, predicts crop yield, plans irrigation over several days, and analyses pipeline routes. Everything is written in C++ with **hand-written data structures** (BST, circular queue, max-heap, graph + BFS).
