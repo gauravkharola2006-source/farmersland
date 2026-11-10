@@ -1,0 +1,128 @@
+```<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farming System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌾 Smart Farming System</h1>
+            <p class="subtitle">Manage fields, irrigation, and yield predictions</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Field Management Section -->
+            <section class="card">
+                <h2>Field Management</h2>
+                <div class="form-group">
+                    <div class="input-row">
+                        <input type="number" id="fieldId" placeholder="Field ID" min="1">
+                        <input type="number" id="moisture" placeholder="Moisture (0-100)" min="0" max="100">
+                        <input type="text" id="crop" placeholder="Crop Type">
+                        <button onclick="addField()" class="btn btn-primary">Add/Update Field</button>
+                    </div>
+                    <div class="input-row">
+                        <input type="number" id="removeFieldId" placeholder="Field ID to Remove" min="1">
+                        <button onclick="removeField()" class="btn btn-danger">Remove Field</button>
+                    </div>
+                </div>
+                <button onclick="listFields()" class="btn btn-secondary">List All Fields</button>
+                <div id="fieldsList" class="output-area"></div>
+            </section>
+
+            <!-- Irrigation Queue Section -->
+            <section class="card">
+                <h2>Irrigation Queue</h2>
+                <div class="form-group">
+                    <div class="input-row">
+                        <input type="number" id="queueFieldId" placeholder="Field ID" min="1">
+                        <button onclick="enqueueField()" class="btn btn-primary">Enqueue</button>
+                        <button onclick="dequeueField()" class="btn btn-secondary">Dequeue Next</button>
+                    </div>
+                    <div class="input-row">
+                        <input type="number" id="scheduleCount" placeholder="How many fields to schedule" min="1" max="256">
+                        <button onclick="scheduleFromHeap()" class="btn btn-primary">Schedule Driest from Heap</button>
+                    </div>
+                </div>
+                <div id="queueStatus" class="output-area"></div>
+            </section>
+
+            <!-- Priority Heap Section -->
+            <section class="card">
+                <h2>Priority Heap (By Dryness)</h2>
+                <div class="form-group">
+                    <button onclick="buildHeap()" class="btn btn-primary">Build Heap from Fields</button>
+                    <button onclick="extractMax()" class="btn btn-secondary">Extract Highest Priority</button>
+                </div>
+                <div id="heapStatus" class="output-area"></div>
+            </section>
+
+            <!-- Yield Prediction Section -->
+            <section class="card">
+                <h2>Yield Prediction</h2>
+                <div class="form-group">
+                    <div class="input-row">
+                        <input type="number" id="predictFieldId" placeholder="Field ID" min="1">
+                        <button onclick="predictYield()" class="btn btn-primary">Predict Yield</button>
+                    </div>
+                </div>
+                <div id="predictionResult" class="output-area"></div>
+            </section>
+
+            <!-- Irrigation Planning Section -->
+            <section class="card">
+                <h2>Multi-Day Irrigation Planning</h2>
+                <div class="form-group">
+                    <div class="input-row">
+                        <input type="number" id="planDays" placeholder="Number of Days" min="1">
+                        <input type="number" id="planPerDay" placeholder="Max Fields per Day" min="1">
+                        <button onclick="planIrrigation()" class="btn btn-primary">Generate Plan</button>
+                    </div>
+                </div>
+                <div id="planResult" class="output-area"></div>
+            </section>
+
+            <!-- Pipeline Network Section -->
+            <section class="card">
+                <h2>Pipeline Network (BFS)</h2>
+                <div class="form-group">
+                    <div class="input-row">
+                        <input type="text" id="networkFile" placeholder="Network File (e.g., pipeline_network.txt)">
+                        <input type="number" id="sourceNode" placeholder="Source Node" min="0">
+                        <input type="number" id="targetNode" placeholder="Target Node" min="0">
+                        <button onclick="findShortestPath()" class="btn btn-primary">Find Shortest Path</button>
+                    </div>
+                </div>
+                <div id="pathResult" class="output-area"></div>
+            </section>
+
+            <!-- File Operations Section -->
+            <section class="card">
+                <h2>File Operations</h2>
+                <div class="form-group">
+                    <div class="input-row">
+                        <input type="text" id="saveFilename" placeholder="Filename to Save">
+                        <button onclick="saveFields()" class="btn btn-primary">Save Fields</button>
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="loadFilename" placeholder="Filename to Load">
+                        <button onclick="loadFields()" class="btn btn-secondary">Load Fields</button>
+                    </div>
+                </div>
+                <div id="fileStatus" class="output-area"></div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
